@@ -38,10 +38,10 @@
 -- FROM employees
 -- WHERE salary > (SELECT salary FROM employees WHERE last_name = 'Bell') ;
 -- 9. Write a query to find the names (first_name, last_name), the salary of the employees who earn the same salary as the minimum salary for all departments.
-WITH min_sala as (SELECT MIN(salary) as min_salary, job_id FROM employees GROUP BY job_id)
-SELECT first_name || ' ' || last_name as name, salary, employees.job_id
-FROM employees
-JOIN min_sala  on employees.salary = min_sala.min_salary AND employees.job_id = min_sala.job_id;
+-- WITH min_sala as (SELECT MIN(salary) as min_salary, job_id FROM employees GROUP BY job_id)
+-- SELECT first_name || ' ' || last_name as name, salary, employees.job_id
+-- FROM employees
+-- JOIN min_sala  on employees.salary = min_sala.min_salary AND employees.job_id = min_sala.job_id;
 -- 10. Write a query to find the names (first_name, last_name) of the employees who are not supervisors.
 -- SELECT first_name || ' ' || last_name as name
 -- FROM employees
@@ -52,12 +52,13 @@ JOIN min_sala  on employees.salary = min_sala.min_salary AND employees.job_id = 
 -- JOIN (SELECT SUM(salary)/COUNT(salary) as avg_salary, job_id FROM employees GROUP BY job_id) as b on employees.salary < b.avg_salary AND employees.job_id = b.job_id;
 -- 12. Write a query to find the 5th maximum salary in the employees table.
 -- SELECT * 
--- FROM (SELECT * FROM employees ORDER BY salary DESC LIMIT 5)
+-- FROM (SELECT DISTINCT salary FROM employees ORDER BY salary DESC LIMIT 5)
 -- ORDER BY salary ASC LIMIT 1;
 -- 13. Write a query to find the 4th minimum salary in the employees table.
 -- SELECT * 
--- FROM (SELECT * FROM employees ORDER BY salary ASC LIMIT 4)
+-- FROM (SELECT DISTINCT salary FROM employees ORDER BY salary ASC LIMIT 4)
 -- ORDER BY salary DESC LIMIT 1;
+
 -- 14. Write a query to select last 10 records from a table.
 --SELECT * FROM employees ORDER BY employee_id DESC LIMIT 10;
 -- 15. Write a query to list department number, name for all the departments in which there are no employees in the department.
