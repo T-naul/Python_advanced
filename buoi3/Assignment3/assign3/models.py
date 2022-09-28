@@ -9,7 +9,7 @@ class Person(models.Model):
 
 class Manufactuer(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=50, null=False, unique=True)
+    name = models.CharField(max_length=50, blank=False, unique=True)
     address = models.CharField(max_length=200)
     email = models.EmailField(unique=True)
 
